@@ -1,0 +1,11 @@
+matplotlib==3.5.2
+mysql_connector_repackaged==0.3.1
+numpy==1.22.3
+pandas==1.4.2
+scikit_learn==1.0.2
+seaborn==0.11.2
+plotly==5.7.0
+plotly-express==0.4.1
+dvc==2.10.2 
+Xgboost==1.6.1
+mlflow == 1.26.0
