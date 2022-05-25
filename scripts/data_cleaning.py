@@ -3,7 +3,9 @@ import pandas as pd
 import numpy as np
 from regex import D
 from scripts.data_visualization import Data_Viz
-
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 class DataCleaner:
     """
@@ -12,6 +14,19 @@ class DataCleaner:
 
     def __init__(self) -> None:
         self.summar = Data_Viz()
+        
+        
+    def rename(self, df, col, old, new):
+        """
+        functions that renames specified list of old values with new ones
+        in a column
+        """
+        for i in range(len(old)):
+            df[col] = df[col].replace([old[i]], new[i])
+            
+        logger.info("values successfully renamed")
+
+        return df
 
     '''
     removing columing with missing values exceeding the limit set
@@ -134,6 +149,7 @@ class DataCleaner:
             df_temp.drop(df_temp, inplace=True)
 
         return df_temp
+    
 
     """
     removing specified columns from dataframe
