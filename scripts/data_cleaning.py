@@ -7,6 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+
 class DataCleaner:
     """
     Class for cleaning our given data
@@ -14,19 +15,15 @@ class DataCleaner:
 
     def __init__(self) -> None:
         self.summar = Data_Viz()
-        
-        
-    def rename(self, df, col, old, new):
-        """
-        functions that renames specified list of old values with new ones
-        in a column
-        """
-        for i in range(len(old)):
-            df[col] = df[col].replace([old[i]], new[i])
-            
-        logger.info("values successfully renamed")
 
-        return df
+    def convert_to_datetime(self, df, columns):
+        """
+        convert to datetime.
+        """
+        for col in columns:
+            df[col] = pd.to_datetime(df[col])
+
+        logger.info("string successfully converted to datetime")
 
     '''
     removing columing with missing values exceeding the limit set
@@ -149,7 +146,6 @@ class DataCleaner:
             df_temp.drop(df_temp, inplace=True)
 
         return df_temp
-    
 
     """
     removing specified columns from dataframe
@@ -161,3 +157,15 @@ class DataCleaner:
         else:
             rm_df = df.drop(cols, axis=1)
         return rm_df
+
+    def rename(self, df, col, old, new):
+        """
+        functions that renames specified list of old values with new ones
+        in a column
+        """
+        for i in range(len(old)):
+            df[col] = df[col].replace([old[i]], new[i])
+
+        logger.info("values successfully renamed")
+
+        return df
