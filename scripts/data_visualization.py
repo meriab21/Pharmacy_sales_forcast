@@ -14,6 +14,11 @@ class Data_Viz:
     """
     Class for Data visualization of our data
     """
+    def __init__(self, filehandler) -> None:
+        file_handler = logging.FileHandler(filehandler)
+        formatter = logging.Formatter("time: %(asctime)s, function: %(funcName)s, module: %(name)s, message: %(message)s \n")
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
 
     def plot_box(self, df: pd.DataFrame, columns, color: str) -> None:
         """
@@ -87,6 +92,7 @@ class Data_Viz:
         plt.xlabel('Promotion')
         plt.ylabel('probability')
         plt.show()
+        
         logger.info("double binomial distribution successfully created")
 
     def binom_distribution(self, C_aware, C_total, C_cr) -> None:

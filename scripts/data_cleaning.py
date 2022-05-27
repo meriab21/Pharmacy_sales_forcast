@@ -1,3 +1,4 @@
+from cmath import log
 from operator import length_hint
 import pandas as pd
 import numpy as np
@@ -13,9 +14,14 @@ class DataCleaner:
     Class for cleaning our given data
     """
 
-    def __init__(self) -> None:
-        self.summar = Data_Viz()
-
+    def __init__(self, filehandler) -> None:
+        self.summar = Data_Viz('../logs/data_clean_script.log')
+        file_handler = logging.FileHandler(filehandler)
+        formatter = logging.Formatter("time: %(asctime)s, function: %(funcName)s, module: %(name)s, message: %(message)s \n")
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+    
+    
     def convert_to_datetime(self, df, columns):
         """
         convert to datetime.
