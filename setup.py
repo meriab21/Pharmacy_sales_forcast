@@ -7,26 +7,24 @@ from setuptools import setup, find_packages
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('requirements.txt') as requirement_file:
-    requirements_list = requirement_file.readlines()
-    requirements_list = [lib.replace('\n', '') for lib in requirements_list]
+requirements = ['pandas>=1.1.0', 'numpy>=1.19.0', ]
 
-requirements = requirements_list
-
-test_requirements = []
+test_requirements = ['pytest>=3', ]
 
 setup(
-    author="Milky Bekele",
-    author_email="milkybekele@gmail.com",
-    python_requires='>=3.8',
+    author="Meron Abate",
+    email="meriab1234@gmail.com",
+    python_requires='>=3.6',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'Natural Language :: English',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
     ],
-    description="Python Implementation of Classical, sequential and machine learning A/B testings to measure the success of SmartAd company Ads.",
+    description="",
     install_requires=requirements,
     long_description=readme,
     include_package_data=True,
@@ -35,7 +33,7 @@ setup(
     packages=find_packages(include=['scripts', 'scripts.*']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/DePacifier/SmartAd-Campaign',
+    url='https://github.com/meriab21/Pharmacy_sales_forcast',
     version='0.1.0',
     zip_safe=False,
 )
