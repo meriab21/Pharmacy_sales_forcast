@@ -1,7 +1,4 @@
-/sample_submission.csv
 /store.csv
 /test.csv
 /train.csv
-/test_store.csv
-/train_store.csv
-
+/store_train_joined.csv
